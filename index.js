@@ -19,6 +19,10 @@ app.use('/api/auth', authRouter);
 // Shop router
 app.use('/api/shop', shopRouter);
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the shop management system');
+})
+
 
 
 app.listen(PORT, () => {
