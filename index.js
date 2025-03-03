@@ -22,7 +22,9 @@ app.use('/api/shop', shopRouter);
 app.get('/', (req, res) => {
     res.send('Welcome to the shop management system');
 })
-
+app.get('/home', (req, res) => {
+    res.send('Welcome to the shop management system');
+})
 
 
 app.listen(PORT, () => {
