@@ -1,0 +1,20 @@
+webi-api URL :  https://myshop-backend-bme6.onrender.com
+
+// LOGIN 
+URL : http://localhost:3000/api/auth/login
+DATA :{
+    "email":"kumarnitesh252@gmail.com",
+    "phone":"",
+    "password":"123456"
+}
+
+// SIGNUP 
+URL : http://localhost:3000/api/auth/signup
+DATA : {
+    "shop_name":"Nitesh",
+    "email":"kumarnitesh252@gmail.com",
+    "phone":"",
+    "password":"123456",
+    "user_type":"Admin",
+    "is_active":true
+}

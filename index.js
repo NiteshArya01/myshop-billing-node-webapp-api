@@ -6,6 +6,7 @@ require('./src/config/db_connection');
 // router
 const authRouter = require('./src/routes/auth');
 const shopRouter = require('./src/routes/shopRoute');
+const ledgerRouter = require('./src/routes/ledgerRoute');
 
 // middleware
 const app = express();
@@ -18,6 +19,9 @@ app.use('/api/auth', authRouter);
 
 // Shop router
 app.use('/api/shop', shopRouter);
+
+// Ledger Router
+app.use('/api',ledgerRouter);
 
 app.get('/', (req, res) => {
     res.send('Welcome to the shop management system');

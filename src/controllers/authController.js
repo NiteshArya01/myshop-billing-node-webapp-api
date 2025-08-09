@@ -141,14 +141,16 @@ const login = async (req, res) => {
             if (user.length < 1) {
                 res.status(401).json({
                     success: false,
-                    msg: "We're sorry, but the user you're trying to reach does not exist in our system."
+                    msg:"User not found. Please verify and try again."
+                    // msg: "We're sorry, but the user you're trying to reach does not exist in our system."
                 })
             } else {
                 bcrypt.compare(req.body.password, user[0].password, (err, result) => {
                     if (!result) {
                         return res.status(401).json({
                             success: false,
-                            msg: "We're sorry, but the password you entered is incorrect. Please ensure that you've entered the correct password and try again."
+                            msg:"Incorrect password. Please check and try again."
+                            // msg: "We're sorry, but the password you entered is incorrect. Please ensure that you've entered the correct password and try again."
                         })
                     }
 
@@ -162,7 +164,8 @@ const login = async (req, res) => {
                             if (err) {
                                 return res.status(400).json({
                                     success: false,
-                                    msg: "We're sorry, but we were unable to process your login at this time. Please try again later."
+                                    msg:"Login failed. Please try again later."
+                                    // msg: "We're sorry, but we were unable to process your login at this time. Please try again later."
                                 })
                             }
                             res.status(200).json({ success: true, msg: 'Welcome back! You have successfully logged in.', token });
