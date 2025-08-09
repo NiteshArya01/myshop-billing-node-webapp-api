@@ -1,19 +1,18 @@
 // require('dotenv').config();
 const mongoose = require('mongoose');
 
-const connectionOptions = {
+const connectionpOptions = {
     dbName: process.env.DB_NAME,
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
-};
+    //useNewUrlParser: true,
+    //useUnifiedTopology: true,
+  }
+//   const connectionUri = `mongodb+srv://kumarnitesh251:darling@myshop.46ccu.mongodb.net/?retryWrites=true&w=majority&appName=MYSHOP`
+const connectionUri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority&appName=${process.env.DB_APP_NAME}`;
 
-const connectionUri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority&appName=MYSHOP`;
-
-mongoose.connect(connectionUri, connectionOptions).then(response => {
+const dbConnection= mongoose.connect(connectionUri, connectionpOptions).then(()=>{
     console.log("Database connected successfully");
-}).catch(error => {
-    console.log(error);
-    console.log("Database not connected");
-});
+}).catch(error=>{
+    console.log("Database connection failed")
+})
 
-module.exports = mongoose;
+module.export = dbConnection;
