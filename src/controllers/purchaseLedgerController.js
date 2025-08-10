@@ -2,7 +2,7 @@ const purchaseLedgerModel = require("../models/purchaseLedgerModel");
 
 // Add new purchase account
 const addPurchaseAccount = async(req, res)=>{
-    const {company_name,contact_person_name,phone,email,GST_number,bank_name,account_number,ifsc_code} = req.body;
+    const {company_name,contact_person_name,phone,email,GST_number,bank_name,account_number,ifsc_code,address} = req.body;
     
     var obj={
         shop_id : req.user.id,
@@ -12,7 +12,8 @@ const addPurchaseAccount = async(req, res)=>{
         GST_number : GST_number,
         bank_name : bank_name,
         account_number : account_number,
-        ifsc_code : ifsc_code
+        ifsc_code : ifsc_code,
+        address : address
     }
     
     const data = new purchaseLedgerModel(obj);

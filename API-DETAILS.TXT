@@ -1,3 +1,6 @@
+DB-NAME : my_billing_shop (LOCAL TEST DB)
+DB_NAME : my_shop (WEB TEST DB)
+
 webi-api URL :  https://myshop-backend-bme6.onrender.com
 
 // LOGIN 
