@@ -1,22 +1,23 @@
-const purchaseLedgerModel = require("../models/purchaseLedgerModel");
+const salesLedgerModel = require('../models/salesLedgerModal');
 
 // Add new purchase account
-const addPurchaseAccount = async(req, res)=>{
-    const {company_name,contact_person_name,phone,email,GST_number,bank_name,account_number,ifsc_code,address} = req.body;
+const addSalesAccount = async(req, res)=>{
+    const {customer_name,contact_person_name,phone,email,GST_number,bank_name,account_number,ifsc_code,account_type,address} = req.body;
     
     var obj={
         shop_id : req.user.id,
-        company_name : company_name,
+        customer_name : customer_name,
         contact_person_name : contact_person_name,
         phone: phone,
         GST_number : GST_number,
         bank_name : bank_name,
         account_number : account_number,
         ifsc_code : ifsc_code,
+        account_type: account_type,
         address : address
     }
     
-    const data = new purchaseLedgerModel(obj);
+    const data = new salesLedgerModel(obj);
     data.save().then(result => {
             res.status(200).json({
                 success: true,
@@ -33,11 +34,11 @@ const addPurchaseAccount = async(req, res)=>{
         })
 }   
 
-const updatePurchaseAccount= async(req,res)=>{
+const updateSalesAccount= async(req,res)=>{
 
 }
 
 module.exports ={
-    addPurchaseAccount,
-    updatePurchaseAccount
+    addSalesAccount,
+    updateSalesAccount
 }

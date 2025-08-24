@@ -1,15 +1,15 @@
 const { text } = require("express");
 const mongoose = require("mongoose");
 
-const purchaseLedgerModel = mongoose.Schema({
+const salesLedgerModel = mongoose.Schema({
     shop_id: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref: 'register_shops'
     },
-    company_name:{
+    customer_name:{
         type : String,
-        required : [true, 'Company name is required']
+        required : [true, 'Customer name is required']
     },
     contact_person_name:{
         type: String,
@@ -26,7 +26,8 @@ const purchaseLedgerModel = mongoose.Schema({
         type: String
     },
     bank_name:{
-        type : String
+        type : String,
+        required :[true, 'Bank name is required']
     },
     account_number:{
         type : Number,
@@ -38,13 +39,13 @@ const purchaseLedgerModel = mongoose.Schema({
     },
     account_type:{
         type : String,
-        default: "purchase_account"
+        required : [true, 'Account type is required']
     },
     address:{
         type : String
     }
 });
 
-const purchaseAccountSchema = mongoose.model('purchase_account', purchaseLedgerModel);
+const salesAccountSchema = mongoose.model('sales_account', salesLedgerModel);
 
-module.exports =purchaseAccountSchema
+module.exports =salesAccountSchema
