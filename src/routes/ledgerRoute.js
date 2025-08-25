@@ -15,10 +15,10 @@ const purchaseLedgerContrrolr = require("../controllers/purchaseLedgerController
 const salesLedgerController = require("../controllers/salesLedgerController");
 
 // Retail ledger controller 
-const retailLedgerController = require("../controllers/retailLedgerController");
+// const retailLedgerController = require("../controllers/retailLedgerController");
 
 
-
+const reatilsLedgerController = require("../controllers/retailsLedgerController");
 
 
 
