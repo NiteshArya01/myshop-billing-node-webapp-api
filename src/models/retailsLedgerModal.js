@@ -1,7 +1,7 @@
 const { text } = require("express");
 const mongoose = require("mongoose");
 
-const retailLedgerModel = mongoose.Schema({
+const retailsLedgerModel = mongoose.Schema({
     shop_id: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
@@ -24,6 +24,6 @@ const retailLedgerModel = mongoose.Schema({
     }
 });
 
-const retailAccountSchema = mongoose.model('retail_account', retailLedgerModel);
+const retailAccountSchema = mongoose.model('retail_account', retailsLedgerModel);
 
 module.exports =retailAccountSchema

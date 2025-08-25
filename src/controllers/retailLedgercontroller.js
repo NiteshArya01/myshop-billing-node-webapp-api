@@ -1,7 +1,7 @@
-const salesLedgerModel = require('../models/salesLedgerModal');
+const retailsLedgerModel = require('../models/retailsLedgerModal');
 
 // Add new purchase account
-const addTetailAccount = async(req, res)=>{
+const addRetailAccount = async(req, res)=>{
     const {customer_name,phone,address} = req.body;
     
     var obj={
@@ -11,7 +11,7 @@ const addTetailAccount = async(req, res)=>{
         address : address
     }
     
-    const data = new salesLedgerModel(obj);
+    const data = new retailsLedgerModel(obj);
     data.save().then(result => {
             res.status(200).json({
                 success: true,
@@ -33,6 +33,6 @@ const updateRetailAccount= async(req,res)=>{
 }
 
 module.exports ={
-    addTetailAccount,
+    addRetailAccount,
     updateRetailAccount
 }
