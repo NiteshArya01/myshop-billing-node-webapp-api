@@ -15,9 +15,6 @@ const purchaseLedgerContrrolr = require("../controllers/purchaseLedgerController
 const salesLedgerController = require("../controllers/salesLedgerController");
 
 // Retail ledger controller 
-// const retailLedgerController = require("../controllers/retailLedgerController");
-
-
 const reatilsLedgerController = require("../controllers/retailsLedgerController");
 
 
@@ -37,7 +34,7 @@ router.post('/ledger-sales/update',auth,salesLedgerController.updateSalesAccount
 
 
 // // Retail account routes
-// router.post('/ledger-retail/add',auth,retailLedgerController.addRetailAccount);
-// router.post('/ledger-retail/update',auth,retailLedgerController.updateRetailAccount);
+router.post('/ledger-retail/add',auth,reatilsLedgerController.addRetailsAccount);
+router.post('/ledger-retail/update',auth,reatilsLedgerController.updateRetailsAccount);
 
 module.exports = router;
