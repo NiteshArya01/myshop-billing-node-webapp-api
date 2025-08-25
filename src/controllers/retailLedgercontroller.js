@@ -29,7 +29,7 @@ const addRetailAccount = async(req, res)=>{
 }   
 
 const updateRetailAccount= async(req,res)=>{
-
+    console.log(req);
 }
 
 module.exports ={
