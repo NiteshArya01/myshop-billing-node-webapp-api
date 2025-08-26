@@ -26,7 +26,7 @@ const reatilsLedgerController = require("../controllers/retailsLedgerController"
 // Purchase account routes
 router.post('/ledger-purchase/add',auth,purchaseLedgerContrrolr.addPurchaseAccount);
 router.post('/ledger-purchase/update',auth,purchaseLedgerContrrolr.updatePurchaseAccount);
-
+router.get('/ledger-purchase/list',auth,purchaseLedgerContrrolr.purchaseAccountList);
 
 // Sales account routes
 router.post('/ledger-sales/add',auth,salesLedgerController.addSalesAccount);

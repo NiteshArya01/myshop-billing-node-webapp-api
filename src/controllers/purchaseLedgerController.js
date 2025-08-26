@@ -37,7 +37,30 @@ const updatePurchaseAccount= async(req,res)=>{
 
 }
 
+const purchaseAccountList = async(req,res)=>{
+    try {
+        const shopId = req.user.id;
+
+        // Fetch all purchase accounts for the current shop
+        const accounts = await purchaseLedgerModel.find({ shop_id: shopId });
+
+        res.status(200).json({
+            success: true,
+            msg: "Purchase ledger accounts retrieved successfully",
+            data: accounts
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            error: err,
+            msg: "Failed to fetch purchase accounts. Please try again later."
+        });
+    }
+
+}
+
 module.exports ={
     addPurchaseAccount,
-    updatePurchaseAccount
+    updatePurchaseAccount,
+    purchaseAccountList
 }
