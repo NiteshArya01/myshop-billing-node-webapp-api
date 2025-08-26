@@ -17,7 +17,7 @@ const retailsLedgerModel = mongoose.Schema({
     },    
     account_type:{
         type : String,
-        default : 'retail'
+        default : 'Retail'
     },
     address:{
         type : String

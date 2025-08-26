@@ -38,7 +38,7 @@ const purchaseLedgerModel = mongoose.Schema({
     },
     account_type:{
         type : String,
-        default: "purchase_account"
+        default: "Purchase"
     },
     address:{
         type : String
