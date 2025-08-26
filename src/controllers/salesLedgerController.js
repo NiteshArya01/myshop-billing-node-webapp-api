@@ -9,6 +9,7 @@ const addSalesAccount = async(req, res)=>{
         customer_name : customer_name,
         contact_person_name : contact_person_name,
         phone: phone,
+        email: email,
         GST_number : GST_number,
         bank_name : bank_name,
         account_number : account_number,
@@ -21,7 +22,7 @@ const addSalesAccount = async(req, res)=>{
     data.save().then(result => {
             res.status(200).json({
                 success: true,
-                msg: "Ledger account created successfully",
+                msg: "Sales account created successfully",
                 data: result
             })
 
