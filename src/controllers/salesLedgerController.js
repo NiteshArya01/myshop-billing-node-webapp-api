@@ -39,7 +39,31 @@ const updateSalesAccount= async(req,res)=>{
 
 }
 
+
+const salesAccountList = async(req, res)=>{
+    try{
+        const shopId = req.user.id;
+
+        // Fetch all sales account list
+        const account = await salesLedgerModel.find({shop_id:shopId});
+
+        res.status(200).json({
+                success: true,
+                msg: "Sales ledger accounts retrieved successfully",
+                data: accounts
+        });
+    }catch(err){
+        res.status(500).json({
+            success: false,
+            error: err,
+            msg: "Failed to fetch purchase accounts. Please try again later."
+        });
+    }
+    
+}
+
 module.exports ={
     addSalesAccount,
-    updateSalesAccount
+    updateSalesAccount,
+    salesAccountList
 }
