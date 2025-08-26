@@ -9,6 +9,7 @@ const addPurchaseAccount = async(req, res)=>{
         company_name : company_name,
         contact_person_name : contact_person_name,
         phone: phone,
+        email: email,
         GST_number : GST_number,
         bank_name : bank_name,
         account_number : account_number,
