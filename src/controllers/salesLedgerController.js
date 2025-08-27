@@ -43,14 +43,22 @@ const updateSalesAccount= async(req,res)=>{
 const salesAccountList = async(req, res)=>{
     try{
         const shopId = req.user.id;
+        const accountType = req.body.account_type;
 
-        // Fetch all sales account list
-        const account = await salesLedgerModel.find({shop_id:shopId});
+        let query = { shop_id: shopId };
+
+        // Add account_type filter only if it's not "All"
+        if (accountType !== "All") {
+            query.account_type = accountType;
+        }
+
+        const account = await salesLedgerModel.find(query);
+
 
         res.status(200).json({
                 success: true,
                 msg: "Sales ledger accounts retrieved successfully",
-                data: accounts
+                data: account
         });
     }catch(err){
         res.status(500).json({

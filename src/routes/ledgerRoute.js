@@ -31,9 +31,9 @@ router.get('/ledger-purchase/list',auth,purchaseLedgerContrrolr.purchaseAccountL
 // Sales account routes
 router.post('/ledger-sales/add',auth,salesLedgerController.addSalesAccount);
 router.post('/ledger-sales/update',auth,salesLedgerController.updateSalesAccount);
-router.get('/ledger-sales/list',auth,salesLedgerController.salesAccountList);
+router.post('/ledger-sales/list',auth,salesLedgerController.salesAccountList);
 
-// // Retail account routes
+// // Retail account routes8
 router.post('/ledger-retail/add',auth,reatilsLedgerController.addRetailsAccount);
 router.post('/ledger-retail/update',auth,reatilsLedgerController.updateRetailsAccount);
 
