@@ -28,11 +28,35 @@ const addRetailsAccount = async(req, res)=>{
         })
 }   
 
+const retailAccountList = async(req, res)=>{
+    try{
+        const shopId = req.user.id;
+        
+        let query = {shop_id:shopId};
+
+        const list = retailsLedgerModal.find(query);
+
+        res.status(200).json({
+            success: true,
+                    msg: "Retail ledger accounts retrieved successfully",
+                    data: list
+        })
+    }
+    catch(err){
+        res.status(500).json({
+            success: false,
+            error: err,
+            msg: "Failed to fetch retail accounts. Please try again later."
+        });
+    }
+}
+
 const updateRetailsAccount= async(req,res)=>{
 
 }
 
 module.exports ={
     addRetailsAccount,
-    updateRetailsAccount
+    updateRetailsAccount,
+    retailAccountList
 }
