@@ -36,6 +36,6 @@ router.get('/ledger-sales/list',auth,salesLedgerController.salesAccountList);
 // // Retail account routes8
 router.post('/ledger-retail/add',auth,reatilsLedgerController.addRetailsAccount);
 router.post('/ledger-retail/update',auth,reatilsLedgerController.updateRetailsAccount);
-router.get('/ledge/retail/list',auth,reatilsLedgerController.retailAccountList);
+router.get('/ledge-retail/list',auth,reatilsLedgerController.retailAccountList);
 
 module.exports = router;
