@@ -1,5 +1,5 @@
 const retailsLedgerModal = require('../models/retailsLedgerModal');
-
+const mongoose = require("mongoose");
 // Add new purchase account
 const addRetailsAccount = async(req, res)=>{
     const {customer_name,phone,address} = req.body;
@@ -52,7 +52,45 @@ const retailAccountList = async(req, res)=>{
 }
 
 const updateRetailsAccount= async(req,res)=>{
+try{
+        const { id } = req.params;
+        const {customer_name,phone,address} = req.body;
+    
+        var updateData={
+            shop_id : req.user.id,
+            customer_name : customer_name,
+            phone: phone,
+            address : address
+        }
 
+        // Validate ObjectId
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ error: 'Invalid retail account ID' });
+        }
+        // Optional: sanitize or validate fields here
+        // Example: if phone is present, ensure it's a number
+        if (updateData.phone && isNaN(updateData.phone)) {
+            return res.status(400).json({ error: 'Phone number must be numeric' });
+        }
+
+        const updatedAccount = await retailsLedgerModal.findByIdAndUpdate(
+            id,
+            { $set: updateData },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedAccount) {
+            return res.status(404).json({ error: 'Retail account not found' });
+        }
+
+        res.status(200).json({
+            message: 'Retail account updated successfully',
+            data: updatedAccount
+        });
+    } catch (error) {
+        console.error('Update error:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 }
 
 module.exports ={
