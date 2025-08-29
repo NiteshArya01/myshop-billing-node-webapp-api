@@ -31,10 +31,10 @@ const addRetailsAccount = async(req, res)=>{
 const retailAccountList = async(req, res)=>{
     try{
         const shopId = req.user.id;
-        
+    
         let query = {shop_id:shopId};
 
-        const list = retailsLedgerModal.find(query);
+        const list = await retailsLedgerModal.find(query);
 
         res.status(200).json({
             success: true,
