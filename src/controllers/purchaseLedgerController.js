@@ -109,8 +109,30 @@ const purchaseAccountList = async(req,res)=>{
 
 }
 
+const purchaseAccountDelete = async(req,res)=>{
+    try {
+        const accountId = req.params.id;
+
+        const accounts = await purchaseLedgerModel.deleteOne({ _id: accountId });
+
+        res.status(200).json({
+            success: true,
+            msg: "Purchase ledger accounts deleted successfully",
+            data: accounts
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: err,
+            msg: "Failed to delete purchase accounts. Please try again later."
+        });
+    }
+}
+
 module.exports ={
     addPurchaseAccount,
     updatePurchaseAccount,
-    purchaseAccountList
+    purchaseAccountList,
+    purchaseAccountDelete
 }

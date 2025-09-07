@@ -109,8 +109,30 @@ const salesAccountList = async(req, res)=>{
     
 }
 
+const salesAccountDelete =async (req, res)=>{
+    try{
+        const accountId= req.params.id;
+
+        const account = await salesLedgerModel.deleteOne({_id : accountId});
+
+        res.status(200).json({
+            success : true,
+            msg : "Sales ledger account deleted successfully",
+            data : account
+        })
+
+    }catch(err){
+        res.status(500).json({
+            success: false,
+            error: err,
+            msg: "Failed to delete sales accounts. Please try again later."
+        })
+    }
+}
+
 module.exports ={
     addSalesAccount,
     updateSalesAccount,
-    salesAccountList
+    salesAccountList,
+    salesAccountDelete
 }

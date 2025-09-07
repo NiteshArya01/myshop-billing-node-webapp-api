@@ -93,8 +93,29 @@ try{
     }
 }
 
+const retailAccountDelete = async (req, res)=>{
+    try{
+        const account_id = req.params.id;
+
+        const account = await retailsLedgerModal.deleteOne({_id:account_id});
+
+        res.send(200).json({
+            success: true,
+            msg : "Sales ledger account deleted successfully"
+        })
+    }
+    catch(err){
+        res.status(500).json({
+            success: false,
+            error: err,
+            msg: "Failed to delete sales accounts. Please try again later."
+        })
+    }
+}
+
 module.exports ={
     addRetailsAccount,
     updateRetailsAccount,
-    retailAccountList
+    retailAccountList,
+    retailAccountDelete
 }
